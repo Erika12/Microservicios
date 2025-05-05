@@ -1,5 +1,5 @@
-insert into cuenta (nombre, correo, idusuario) values ('Ricardo Campos Villacorta', 'ricardo@mail.com',1);
-insert into cuenta (nombre, correo, idusuario) values ('Juan Jimenez Prado', 'juan@mail.com',2);
-insert into cuenta (nombre, correo, idusuario) values ('Pedro Requena Gonzales', 'pedro@mail.com',3);
-insert into cuenta (nombre, correo, idusuario) values ('Angie Sepulveda Arrunategui', 'angie@mail.com',4);
-insert into cuenta (nombre, correo, idusuario) values ('Janet Villavicenciao Olivares', 'janet@mail.com',5);
+insert into orden (fecha_Orden, id_Customer, total) values ('2025-05-04', 303,0);
+insert into orden (fecha_Orden, id_Customer, total) values ('2025-05-04', 500,0);
+insert into orden (fecha_Orden, id_Customer, total) values ('2025-05-04', 80,0);
+insert into orden (fecha_Orden, id_Customer, total) values ('2025-05-04', 312,0);
+insert into orden (fecha_Orden, id_Customer, total) values ('2025-05-04', 426,0);

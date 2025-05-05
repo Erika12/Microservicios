@@ -45,4 +45,7 @@ public class ItemService {
         repository.deleteById(id);
     }
 
+    public List<Item> obtenerItemPorIdOrden(Long idOrden) {
+        return repository.findByIdOrden(idOrden);
+    }
 }
