@@ -1,0 +1,9 @@
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\controller\ReportController.java
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\service\dto\ReportData.java
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\service\impl\HtmlReportAdapter.java
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\service\ReportGeneratorPort.java
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\service\impl\CompositeReportAdapter.java
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\service\impl\PdfReportAdapter.java
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\dto\Item.java
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\service\exception\ReportGenerationException.java
+D:\SpringCloud\workspace\Microservicios\reporter\src\main\java\com\igp\reporter\ReportApplication.java
