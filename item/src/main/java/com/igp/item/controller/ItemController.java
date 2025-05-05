@@ -48,4 +48,8 @@ public class ItemController {
         service.eliminar(id);
     }
 
+    @GetMapping("/orden/{idOrden}")
+    public List<Item> obtenerItemPorIdOrden(@PathVariable Long idOrden) {
+        return service.obtenerItemPorIdOrden(idOrden);
+    }
 }

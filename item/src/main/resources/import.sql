@@ -1,5 +1,5 @@
-insert into item (nombre, correo) values ('Ricardo', 'ricardo@mail.com');
-insert into item (nombre, correo) values ('Juan', 'juan@mail.com');
-insert into item (nombre, correo) values ('Pedro', 'pedro@mail.com');
-insert into item (nombre, correo) values ('Angie', 'angie@mail.com');
-insert into item (nombre, correo) values ('Janet', 'janet@mail.com');
+insert into item (id_Producto, cantidad, precio, id_Orden) values (100, 100, 500, 1);
+insert into item (id_Producto, cantidad, precio, id_Orden) values (200, 120, 50, 1);
+insert into item (id_Producto, cantidad, precio, id_Orden) values (300, 110, 1500, 2);
+insert into item (id_Producto, cantidad, precio, id_Orden) values (400, 10, 550, 2);
+insert into item (id_Producto, cantidad, precio, id_Orden) values (500, 150, 580, 3);

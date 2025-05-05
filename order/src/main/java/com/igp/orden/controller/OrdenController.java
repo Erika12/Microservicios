@@ -52,5 +52,8 @@ public class OrdenController {
         service.eliminar(id);
     }
 
-    
+    @PutMapping("/update/{id}")
+    public Orden actualizarOrdenById(@PathVariable Long id, @RequestBody Orden orden) {
+        return service.actualizarOrdenById(id, orden);
+    }
 }
