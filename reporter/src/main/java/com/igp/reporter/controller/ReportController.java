@@ -20,6 +20,13 @@ import com.igp.reporter.service.ReportGeneratorPort.ReportFormat;
 import org.springframework.http.MediaType;
 import com.igp.reporter.service.exception.ReportGenerationException;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
+
+@Tag(name="Reporter", description="Servicio generador de reportes PDF/HTML")
 @RestController
 @RequestMapping("/api/reports")
 public class ReportController {
@@ -29,8 +36,12 @@ public class ReportController {
     public ReportController(ReportGeneratorPort reportGenerator) {
         this.reportGenerator = reportGenerator;
     }
-    
-    @GetMapping
+
+    @Operation(summary = "Genera reporte en uno de los siguientes formatos PDF/HTML")
+    @ApiResponses(value={
+        @ApiResponse(responseCode="200", description="Generacion de reporte exitosa.")
+    })
+    @PostMapping
     public ResponseEntity<byte[]> generateReport(
             @RequestParam ReportFormat format,
             @RequestBody ReportData data) 

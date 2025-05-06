@@ -1,14 +1,18 @@
 package com.igp.reporter.dto;
 
+import java.io.Serializable;
+import java.lang.String;
 
 
-
-public class Item {
+public class Item implements Serializable{
 
     private String id;
     private String name;
     private int value;
    
+    public Item() {
+    
+    }
     public String getId() {
         return id;
     }

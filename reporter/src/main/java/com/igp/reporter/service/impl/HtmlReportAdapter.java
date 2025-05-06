@@ -29,6 +29,8 @@ public class HtmlReportAdapter implements ReportGeneratorPort {
         
         Context context = new Context();
         context.setVariable("report", data);
+        context.setVariable("title", data.getTitle());
+        context.setVariable("items", data.getItems());
         context.setVariable("generationDate", LocalDateTime.now());
         
         String html = templateEngine.process("report-template", context);

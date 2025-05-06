@@ -20,6 +20,15 @@ import java.lang.Exception;
 import java.io.IOException;
 import org.springframework.context.annotation.Primary;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.igp.reporter.dto.Item;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 @Service
 //@Primary
 public class PdfReportAdapter implements ReportGeneratorPort
@@ -40,6 +49,7 @@ public class PdfReportAdapter implements ReportGeneratorPort
             document.open();
             document.add(new Paragraph("Reporte: " + data.getTitle()));
             document.add(new Paragraph("Generado el: " + LocalDate.now().toString()));
+            document.add(new Paragraph(""));
             
             // Tabla con datos
             PdfPTable table = new PdfPTable(3);
@@ -51,8 +61,8 @@ public class PdfReportAdapter implements ReportGeneratorPort
             return baos.toByteArray();
         } catch (DocumentException e) {
             throw new ReportGenerationException("Error al generar PDF", e);
-        } catch (IOException e) {
-            throw new ReportGenerationException("Error al generar PDF", e);
+        } catch (IOException ex) {
+            throw new ReportGenerationException("Error al generar PDF", ex);
         }
     }
     
@@ -67,11 +77,47 @@ public class PdfReportAdapter implements ReportGeneratorPort
             });
     }
     
-    private void addDataRows(PdfPTable table, ReportData data) {
-        data.getItems().forEach(item -> {
-            table.addCell(item.getId());
-            table.addCell(item.getName());
-            table.addCell(String.valueOf(item.getValue()));
-        });
+    private void addDataRows(PdfPTable table, ReportData data) 
+        throws IOException{
+        System.out.println("Items: "+ data.getItems().toString());
+        try{
+            //List<Item> itemList = PdfReportAdapter.jsonArrayToList(data.getItems().toString(), Item.class);
+            ObjectMapper objectMapper = new ObjectMapper();
+            
+            CollectionType listType = 
+                        objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, Item.class);
+            
+            List<Item> itemList = objectMapper.readValue(data.getItems().toString(), listType);
+
+            System.out.println(itemList);
+            Iterator<Item> itemsIterator = itemList.iterator();
+            while(itemsIterator.hasNext()) {
+                Item item =  itemsIterator.next();
+                /*System.out.println(item);*/
+                table.addCell(item.getId());
+                table.addCell(item.getName());
+                table.addCell(String.valueOf(item.getValue()));
+            }
+        }catch(IOException ex){
+            System.out.println("Problema en la deserializacion");
+            
+        }
     }
+
+    /*public static <T> List<T> jsonArrayToList(String json, Class<T> elementClass) 
+        throws JsonProcessingException {
+            System.out.println(json);
+            System.out.println(elementClass);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Item> itemList = objectMapper.readValue(json, new TypeReference<List<Item>>() {});
+
+       
+        /*CollectionType listType = 
+            objectMapper.getTypeFactory().constructCollectionType(List.class, elementClass);
+        
+        return objectMapper.readValue(json, listType);*/
+
+     /*   return itemList;
+    }*/
 }
